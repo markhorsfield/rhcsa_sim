@@ -1,10 +1,10 @@
-setup node with centos/8 or rhel/8
+## setup node with centos/8 or rhel/8
 
 launch two nodes
-# vagrant up node1 node2 --provider=libvirt
+`# vagrant up node1 node2 --provider=libvirt`
 
 destroy all nodes and remove any files
-# vagrant destroy -f
+`# vagrant destroy -f`
 
 ssh to VM node1
 ignore the rubygems log messages here. it's a cosmetic issue in Ubuntu 20.04. no functional impact from what I have seen. details at https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1871685 
@@ -43,4 +43,7 @@ test key based authentication
 ```
 [vagrant@node1 ~]$ ssh vagrant@node2
 Last login: Fri May 22 10:39:25 2020 from 192.168.121.1
+[vagrant@node2 ~]$ exit
+logout
+Connection to node2 closed.
 ```
