@@ -1,11 +1,13 @@
 ## setup node with centos/8 or rhel/8
 
+#### provision / destroy 
 launch two nodes\
 `# vagrant up node1 node2 --provider=libvirt`
 
 destroy all nodes and remove any files\
 `# vagrant destroy -f`
 
+#### access VM and basic connectivity
 ssh to VM node1\
 ignore the rubygems log messages here. it's a cosmetic issue in Ubuntu 20.04. no functional impact from what I have seen. details at https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1871685 
 ```
