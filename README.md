@@ -1,11 +1,15 @@
 ## setup node with centos/8 or rhel/8
 
+#### vagrant alias
+I use a zsh plugin "vagrant" (https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vagrant)
+if you want to see what's available you can check `# alias | grep vagrant`
+
 #### provision / destroy 
 launch two nodes\
-`# vagrant up node1 node2 --provider=libvirt`
+`# vup node1 node2 --provider=libvirt`
 
 destroy all nodes and remove any files\
-`# vagrant destroy -f`
+`# vdf`
 
 #### access VM and basic connectivity
 ssh to VM node1\
