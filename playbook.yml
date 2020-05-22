@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: ensure NTP client is installed
+      dnf: name=chrony state=present
+    - name: ensure NTP client is running
+      service: name=chronyd.service state=started enabled=yes
+    - name: ensure tree package is installed
+      dnf: name=tree state=present
+    - name: ensure VIM package is installed
+      dnf: name=vim-enhanced state=present
