@@ -66,7 +66,8 @@ PING node2 (192.168.121.202) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.419/0.526/0.633/0.107 ms
 ```
 copy ssh public key to remote node (need to automate this)
-```[vagrant@node1 ~]$ ssh-copy-id vagrant@node2
+```
+[vagrant@node1 ~]$ ssh-copy-id vagrant@node2
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/vagrant/.ssh/id_rsa.pub"
 The authenticity of host 'node2 (192.168.121.202)' can't be established.
 ECDSA key fingerprint is SHA256:dEtNKBQ8J4wY0I4N+b3sk4eG+En6Y+Hl+Yn1iA0qiOs.
