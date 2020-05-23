@@ -4,6 +4,41 @@
 I use a zsh plugin "vagrant" (https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vagrant)
 if you want to see what's available you can check `# alias | grep vagrant`
 
+to remove any ambiguity around what the alias might be doing, here is a list of vagrant commands:\
+(Trey, don't be an animal. use the alias.). 
+```
+% alias | grep vagrant
+vba='vagrant box add'
+vbl='vagrant box list'
+vbo='vagrant box outdated'
+vbr='vagrant box remove'
+vbu='vagrant box update'
+vclos='vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 leaf03 leaf04 spine01 spine02 server01 server02 server03 server04'
+vd='vagrant destroy -f'
+vdf='vagrant destroy -f'
+vgi='vagrant init'
+vgs='vagrant global-status'
+vh='vagrant halt'
+vminimal='vagrant up oob-mgmt-server oob-mgmt-switch leaf01'
+voob='vagrant ssh oob-mgmt-server'
+vp='vagrant push'
+vpli='vagrant plugin install'
+vpll='vagrant plugin list'
+vplu='vagrant plugin update'
+vplun='vagrant plugin uninstall'
+vpr='vagrant provision'
+vr='vagrant reload'
+vrdp='vagrant rdp'
+vre='vagrant resume'
+vrp='vagrant reload --provision'
+vsh='vagrant share'
+vssh='vagrant ssh'
+vsshc='vagrant ssh-config'
+vssp='vagrant suspend'
+vst='vagrant status'
+vup='vagrant up'
+```
+
 #### provision / destroy 
 launch two nodes\
 `# vup node1 node2 --provider=libvirt`
