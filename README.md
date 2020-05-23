@@ -2,7 +2,6 @@
 
 #### vagrant alias
 I use a zsh plugin "vagrant" (https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vagrant)
-if you want to see what's available you can check `# alias | grep vagrant`
 
 to remove any ambiguity around what the alias might be doing, here is a list of vagrant commands:\
 (Trey, don't be an animal. use the alias.). 
