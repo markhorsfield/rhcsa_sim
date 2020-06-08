@@ -42,6 +42,6 @@ NODE_COUNT = 2
   ##### ansible #####
   # install new packages 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "playbook.main.yml"
   end
 end

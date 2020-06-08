@@ -1,7 +1,4 @@
 ---
-- hosts: all
-  become: yes
-  tasks:
     - name: ensure NTP client is installed
       dnf: name=chrony state=present
     - name: ensure NTP client is running

@@ -1,0 +1,5 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - import_tasks: tasks/base.yml
