@@ -1,0 +1,28 @@
+---
+    - name: create node user
+      user:
+        name: "{{ node_user }}"
+        password: "{{ node_user_pass |password_hash('sha512') }}"
+        shell: /bin/bash
+        create_home: yes
+        generate_ssh_key: yes
+    
+    - name: fetch all public keys from managed nodes to manager
+      fetch:
+        src: "/home/{{ node_user }}/.ssh/id_rsa.pub"
+        dest: "tmp/{{ ansible_hostname }}-id_rsa.pub"
+        flat: yes
+    
+    - name: authorize public key for all nodes
+      authorized_key:
+        user: "{{ node_user }}"
+        key: "{{ lookup('file', 'tmp/{{ item }}-id_rsa.pub')}}"
+        state: present
+      with_items:
+        - "{{ groups['cluster_node'] }}"
+    
+    - name: remove local public key copies
+      become: false
+      local_action: file dest='tmp/' state=absent
+      changed_when: false
+      run_once: true
