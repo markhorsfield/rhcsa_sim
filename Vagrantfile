@@ -43,5 +43,8 @@ NODE_COUNT = 2
   # install new packages 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.main.yml"
+    ansible.groups = {
+      "server" => ["node[1:2]"],
+    }
   end
 end
