@@ -65,6 +65,27 @@ node1 | SUCCESS => {
 }
 ```
 
+#### fetch VM SSH public key
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m fetch -a "src='/home/vagrant/.ssh/id_rsa.pub' dest='buffer/{{inventory_hostname}}-id_rsa.pub' flat='yes'" -b
+node1 | CHANGED => {
+    "changed": true,
+    "checksum": "4e6c57f12e2a17efab747e97e8ff01d06e4b815a",
+    "dest": "/home/markh/Git/rhcsa_sim/buffer/node1-id_rsa.pub",
+    "md5sum": "3fd17b73762f4fdd24f5ced7ac19df65",
+    "remote_checksum": "4e6c57f12e2a17efab747e97e8ff01d06e4b815a",
+    "remote_md5sum": null
+}
+node2 | CHANGED => {
+    "changed": true,
+    "checksum": "cc65884815dc72fee361db97d4d230a0c7d6703f",
+    "dest": "/home/markh/Git/rhcsa_sim/buffer/node2-id_rsa.pub",
+    "md5sum": "147be802934a57382302c211089e39fb",
+    "remote_checksum": "cc65884815dc72fee361db97d4d230a0c7d6703f",
+    "remote_md5sum": null
+}
+```
+
 #### access VM and basic connectivity
 ssh to VM node1\
 ignore the rubygems log messages here. it's a cosmetic issue in Ubuntu 20.04. no functional impact from what I have seen. details at https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1871685 
