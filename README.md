@@ -45,6 +45,26 @@ launch two nodes\
 destroy all nodes and remove any files\
 `# vdf`
 
+#### check VM is reachable from ansible control node
+
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m ping                                                                       (allow_ssh_between_servers !?)
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
+
 #### access VM and basic connectivity
 ssh to VM node1\
 ignore the rubygems log messages here. it's a cosmetic issue in Ubuntu 20.04. no functional impact from what I have seen. details at https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1871685 
