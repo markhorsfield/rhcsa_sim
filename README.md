@@ -84,8 +84,11 @@ node2 | CHANGED => {
     "remote_md5sum": null
 }
 ```
-copy SSH key from node1 to authorized_keys dir on node2
-the tail-end of the key shows "root@node1" which is ok. this is only a comment - it is result of Vagrant generating the SSH key as root user. to change it, use `ssh-keygen -c` command
+copy SSH key from node1 to authorized_keys dir on node2\
+
+the tail-end of the key shows "root@node1" which is ok - this is only a comment\
+it is result of Vagrant generating the SSH key as root user\
+to change it, use `ssh-keygen -c` command\
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node1-id_rsa.pub') }}'" --limit=node2 -b
 node2 | CHANGED => {
