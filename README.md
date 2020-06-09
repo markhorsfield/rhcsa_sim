@@ -46,7 +46,7 @@ destroy all nodes and remove any files\
 `# vdf`
 
 #### copy SSH public keys from VM1 to VM2 to allow key-based login
-check VM is reachable from ansible control node\
+check VM is reachable from ansible control node
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m ping                                                                       (allow_ssh_between_servers !?)
 node2 | SUCCESS => {
