@@ -109,7 +109,12 @@ copy SSH key from node2 to authorized_keys dir on node1\
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node2-id_rsa.pub') }}'" --limit=node1 -b
 ```
-
+verify key-based login works from node1 to node2\
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m shell -a "ssh -o StrictHostKeyChecking=no vagrant@node2 'uname -a'" --limit=node1
+node1 | CHANGED | rc=0 >>
+Linux node2 4.18.0-80.el8.x86_64 #1 SMP Tue Jun 4 09:19:46 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+```
 
 #### access VM and basic connectivity
 ssh to VM node1\
