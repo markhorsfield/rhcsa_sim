@@ -45,8 +45,8 @@ launch two nodes\
 destroy all nodes and remove any files\
 `# vdf`
 
-#### check VM is reachable from ansible control node
-
+#### copy SSH public keys from VM1 to VM2 to allow key-based login
+check VM is reachable from ansible control node\
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m ping                                                                       (allow_ssh_between_servers !?)
 node2 | SUCCESS => {
@@ -64,8 +64,7 @@ node1 | SUCCESS => {
     "ping": "pong"
 }
 ```
-
-#### fetch VM SSH public key
+fetch VM SSH public key\
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m fetch -a "src='/home/vagrant/.ssh/id_rsa.pub' dest='buffer/{{inventory_hostname}}-id_rsa.pub' flat='yes'" -b
 node1 | CHANGED => {
@@ -85,6 +84,32 @@ node2 | CHANGED => {
     "remote_md5sum": null
 }
 ```
+copy SSH key from node1 to authorized_keys dir on node2\
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node1-id_rsa.pub') }}'" --limit=node2 -b
+node2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": true,
+    "comment": null,
+    "exclusive": false,
+    "follow": false,
+    "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDha6Ia/KWeXLKOGBm2dpwz01IRoxV5PqGxSdnfbvGrZoxMD6tYohqjfypdMetCRaOEyxgYPzvm4ZUqXVQRefSfHR/GGq9gOCDvIHsx8kEfKNUKF4BDCktjSD1rGI2giC279SsPzFFFj0bwm2drcwuA+peWlX3aFV7Bmc+AxzlegVtToBulUAonHNjzSO6MKvHFOuCRJ/JfTdEEXryTFmpGuRRm/Vg6zH04YPZV9+X6HfPEKMOihiuks9e63QIBnos3Ogun32z2cmq0Tb+KQDFE7PpVs6gnHz5+Uku5YyUe/P8q64jOQYYirXzsH6utrpvrYdlMmYrxJf2vEeNlsFhuim0scdOsq9gzLw/qFAuAupIUC5CYvOf0ZmU7E9vbeXi6WyF0WMGU0YD1/m5MvYwTc70Dg5F81H9eNVKfPh7R9nq+t1Ix7njWKyibinvP+2lPjv+ieTRdgy4QeO2xsoFSP0herekBdn5fY7XNbpIGswujnVkRmv6NXqfb/Veq4pQXjGoL3wTJepCbDGVBbcN7FHC95jRBPb1DfQgv0xi7edw2Cn19HnFVLjmkTYRElMQUVRAWVrmXAFzL+kA7SGjan4HzeOJM6w1OSQrIBRzjQamsaXJaou8z7XbqGa2ooNsJF/gSVLR6Ppw04SBMJC+hVijjG4eTDjHuc9tD1XeAZQ== root@node1",
+    "key_options": null,
+    "keyfile": "/home/vagrant/.ssh/authorized_keys",
+    "manage_dir": true,
+    "path": null,
+    "state": "present",
+    "user": "vagrant",
+    "validate_certs": true
+}
+```
+copy SSH key from node2 to authorized_keys dir on node1\
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node2-id_rsa.pub') }}'" --limit=node1 -b
+```
+
 
 #### access VM and basic connectivity
 ssh to VM node1\
