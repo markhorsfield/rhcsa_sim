@@ -64,7 +64,7 @@ node1 | SUCCESS => {
     "ping": "pong"
 }
 ```
-fetch VM SSH public key\
+fetch VM SSH public key
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m fetch -a "src='/home/vagrant/.ssh/id_rsa.pub' dest='buffer/{{inventory_hostname}}-id_rsa.pub' flat='yes'" -b
 node1 | CHANGED => {
@@ -84,7 +84,7 @@ node2 | CHANGED => {
     "remote_md5sum": null
 }
 ```
-copy SSH key from node1 to authorized_keys dir on node2\
+copy SSH key from node1 to authorized_keys dir on node2
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node1-id_rsa.pub') }}'" --limit=node2 -b
 node2 | CHANGED => {
@@ -105,11 +105,11 @@ node2 | CHANGED => {
     "validate_certs": true
 }
 ```
-copy SSH key from node2 to authorized_keys dir on node1\
+copy SSH key from node2 to authorized_keys dir on node1
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m authorized_key -a "user='vagrant' state='present' key='{{ lookup('file','buffer/node2-id_rsa.pub') }}'" --limit=node1 -b
 ```
-verify key-based login works from node1 to node2\
+verify key-based login works from node1 to node2
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m shell -a "ssh -o StrictHostKeyChecking=no vagrant@node2 'uname -a'" --limit=node1
 node1 | CHANGED | rc=0 >>
