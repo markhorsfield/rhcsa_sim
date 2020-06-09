@@ -1,6 +1,6 @@
 ## setup node with centos/8 or rhel/8
 
-#### vagrant alias
+### vagrant alias
 I use a zsh plugin "vagrant" (https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vagrant)
 
 to remove any ambiguity around what the alias might be doing, here is a list of vagrant commands:\
@@ -38,14 +38,14 @@ vst='vagrant status'
 vup='vagrant up'
 ```
 
-#### provision / destroy 
+### provision / destroy 
 launch two nodes\
 `# vup node1 node2 --provider=libvirt`
 
 destroy all nodes and remove any files\
 `# vdf`
 
-#### copy SSH public keys from VM1 to VM2 to allow key-based login
+### copy SSH public keys from VM1 to VM2 to allow key-based login
 check VM is reachable from ansible control node
 ```
 % ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -m ping                                                                       (allow_ssh_between_servers !?)
@@ -120,7 +120,7 @@ node1 | CHANGED | rc=0 >>
 Linux node2 4.18.0-80.el8.x86_64 #1 SMP Tue Jun 4 09:19:46 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-#### access VM and basic connectivity
+### access VM and basic connectivity
 ssh to VM node1\
 ignore the rubygems log messages here. it's a cosmetic issue in Ubuntu 20.04. no functional impact from what I have seen. details at https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1871685 
 ```
