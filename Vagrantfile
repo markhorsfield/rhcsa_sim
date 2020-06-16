@@ -12,6 +12,9 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
+  #
+  # list of other boxes: "generic/rhel8"
+  #
 
 BOX_IMAGE = "centos/8"
 NODE_COUNT = 2
