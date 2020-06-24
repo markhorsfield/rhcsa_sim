@@ -7,3 +7,5 @@
       dnf: name=tree state=present
     - name: ensure VIM package is installed
       dnf: name=vim-enhanced state=present
+    - name: ensure tcpdump is installed 
+      dnf: name=tcpdump state=present
