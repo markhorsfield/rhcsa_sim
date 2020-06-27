@@ -163,3 +163,20 @@ Last login: Fri May 22 10:39:25 2020 from 192.168.121.1
 logout
 Connection to node2 closed.
 ```
+
+## discover host info
+
+eventually I'll add other host OS
+I will start adding the OS family parameter as needed.
+
+example of the discovery mechanism for Centos8:
+```
+% ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory server -l "node2" -m setup -a 'filter=ansible_os_family'                                             (master !?)
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_os_family": "RedHat",
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false
+}
+```

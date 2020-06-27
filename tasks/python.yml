@@ -1,0 +1,36 @@
+---
+#
+# python dev packages 
+# 'python3' will also install dependencies python3-pip and python3-setuptools 
+#
+#
+    - name: install python3.6 (latest as of June 2020) 
+      dnf: 
+        name:
+          - python3 
+          - python36-devel 
+          - virtualenv
+        state: present
+      when: ansible_os_family == "RedHat"
+#
+#
+# if newer python3 is needed then we need to compile from source
+#
+#
+#    - name: install python dev packages
+#      dnf: 
+#        name:
+#          - zlib-devel.x86_64 
+#          - openssl-devel
+#          - sqlite-devel
+#          - bzip2-devel
+#          - ncurses-devel
+#          - readline-devel
+#          - gdbm-devel
+#          - xz-devel
+#          - tk-devel
+#        state: present
+#    - name: install 'development tools' 
+#      shell: 'sudo dnf groupinstall -y development' 
+#      when: ansible_os_family == "RedHat"
+#    # note: cannot use dnf to groupinstall due to https://bugzilla.redhat.com/show_bug.cgi?id=1620324
