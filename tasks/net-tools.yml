@@ -1,0 +1,10 @@
+---
+#
+# network troubleshooting 
+#
+#
+    - name: install network packages 
+      dnf: 
+        name:
+          - tcpdump 
+        state: present
