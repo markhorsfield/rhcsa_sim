@@ -8,17 +8,3 @@
       dnf: name=chrony state=present
     - name: check NTP client is running
       service: name=chronyd.service state=started enabled=yes
-#
-#
-# base packages
-#
-#
-    - name: install base packages 
-      dnf: 
-        name:
-          - vim-enhanced 
-          - tree 
-          - git
-          - curl
-          - wget
-        state: latest 
