@@ -47,8 +47,9 @@ NODE_COUNT = 2
   # docs: https://docs.ansible.com/ansible/latest/scenario_guides/guide_vagrant.html
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "main.yml"
-    # verbose "v" or "vvv"
-    ansible.verbose = "vvv" 
+    # to disable debug logs, verbose = "false"
+    # to enable debug logs, use "v" (equivalent to "true") or "vvv"
+    ansible.verbose = "false" 
     ansible.groups = {
       "server" => ["node[1:2]"],
     }
