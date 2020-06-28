@@ -44,9 +44,11 @@ NODE_COUNT = 2
 
   ##### ansible #####
   # install new packages 
+  # docs: https://docs.ansible.com/ansible/latest/scenario_guides/guide_vagrant.html
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "main.yml"
-    ansible.verbose = false 
+    # verbose "v" or "vvv"
+    ansible.verbose = "vvv" 
     ansible.groups = {
       "server" => ["node[1:2]"],
     }
