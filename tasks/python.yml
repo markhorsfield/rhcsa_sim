@@ -12,6 +12,8 @@
           - virtualenv
         state: present
       when: ansible_os_family == "RedHat"
+    - name: install IPython
+      shell: 'pip3 install ipython'
 #
 #
 # if newer python3 is needed then we need to compile from source
