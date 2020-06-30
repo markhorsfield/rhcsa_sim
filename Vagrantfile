@@ -49,7 +49,7 @@ NODE_COUNT = 2
     ansible.playbook = "main.yml"
     # to disable debug logs, verbose = "false"
     # to enable debug logs, use "v" (equivalent to "true") or "vvv"
-    ansible.verbose = "false" 
+#    ansible.verbose = "false" 
     ansible.groups = {
       "server" => ["node[1:2]"],
     }
