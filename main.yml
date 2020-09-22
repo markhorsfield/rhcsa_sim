@@ -6,6 +6,6 @@
 
   tasks:
     - import_tasks: tasks/base.yml
-      #    - import_tasks: tasks/python.yml 
+    - import_tasks: tasks/python.yml 
       #    - import_tasks: tasks/systemd.example.yml
-      #    - import_tasks: tasks/net-tools.yml
+    - import_tasks: tasks/net-tools.yml
