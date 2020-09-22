@@ -8,3 +8,19 @@
         name:
           - tcpdump 
         state: present
+    #
+    # The sysstat package provides a number of utilities:
+    # iostat, mpstat, pidstat, tapestat, cifsiostat, sar
+    # for collecting the system use activities 
+    # and system performance.
+    #
+    - name: install sysstat packages  
+      dnf: 
+        name:
+          - sysstat
+        state: present
+    - name: install iotop packages  
+      dnf: 
+        name:
+          - iotop
+        state: present
