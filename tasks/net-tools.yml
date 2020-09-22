@@ -12,6 +12,12 @@
     # requires python pip to be installed
     - name: install httpstat  
       shell: 'wget https://raw.githubusercontent.com/reorx/httpstat/master/httpstat.py'
+    
+    - name: install netcat 
+      dnf: 
+        name:
+          - nmap-ncat 
+        state: present
 
     - name: install network packages 
       dnf: 
