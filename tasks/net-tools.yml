@@ -13,10 +13,11 @@
     - name: install httpstat  
       shell: 'wget https://raw.githubusercontent.com/reorx/httpstat/master/httpstat.py'
     
-    - name: install netcat 
+    - name: install netcat and nmap 
       dnf: 
         name:
           - nmap-ncat 
+          - nmap
         state: present
 
     - name: install network packages 
