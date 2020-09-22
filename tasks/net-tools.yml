@@ -3,6 +3,23 @@
 # network troubleshooting 
 #
 #
+    - name: Extra Packages for Enterprise Linux (EPEL) 
+      dnf: 
+        name:
+          - epel-release 
+        state: present
+
+    # requires python pip to be installed
+    - name: install httpstat  
+      shell: 'wget https://raw.githubusercontent.com/reorx/httpstat/master/httpstat.py'
+    
+    - name: install netcat and nmap 
+      dnf: 
+        name:
+          - nmap-ncat 
+          - nmap
+        state: present
+
     - name: install network packages 
       dnf: 
         name:
@@ -19,6 +36,7 @@
         name:
           - sysstat
         state: present
+
     - name: install iotop packages  
       dnf: 
         name:
