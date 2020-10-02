@@ -3,6 +3,7 @@
 # network troubleshooting 
 #
 #
+    # EPEL repo is needed to install some of the packags named below 
     - name: Extra Packages for Enterprise Linux (EPEL) 
       dnf: 
         name:
