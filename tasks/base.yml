@@ -4,6 +4,8 @@
 # base packages
 #
 #
+    - name: modify terminal info (needed for kitty, alacritty, others)
+      shell: echo 'export TERM=xterm-256color' >> /home/vagrant/.bash_profile
     - name: install base packages 
       dnf: 
         name:
