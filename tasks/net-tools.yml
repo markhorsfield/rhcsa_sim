@@ -26,6 +26,12 @@
         name:
           - tcpdump 
         state: present
+    - name: install throughput testing packages  
+      dnf: 
+        name:
+          - iper3
+          - nuttcp 
+        state: present
     #
     # The sysstat package provides a number of utilities:
     # iostat, mpstat, pidstat, tapestat, cifsiostat, sar
