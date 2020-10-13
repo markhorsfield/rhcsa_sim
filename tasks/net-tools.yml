@@ -29,7 +29,7 @@
     - name: install throughput testing packages  
       dnf: 
         name:
-          - iper3
+          - iperf3
           - nuttcp 
         state: present
     #
